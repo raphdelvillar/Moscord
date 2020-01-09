@@ -6,5 +6,5 @@ port = "8001"
 secret = "moscord"
 
 [newsapi]
-url = "https://newsapi.org/v2/"
+url = "https://newsapi.org/v2"
 key = "c3ec946a2b574f66b4e669efc75f63ff"

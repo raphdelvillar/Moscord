@@ -1,14 +1,20 @@
 "use strict";
 
-var newsapi = require("../service/newsapi");
+let newsapi = require("../service/newsapi");
 
-var controllers = {
-    list: function(req, res) {
-        newsapi.find(req, res, function(err, data) {
-            if (err) res.send(err);
-            res.json(data);
-        });
-    },
-}
+let controllers = {
+  getArticlesBySource: function(req, res) {
+    newsapi.getArticlesFromSource(req, res, function(err, data) {
+      if (err) res.send(err);
+      res.json(data);
+    })
+  },
+  getSources: function(req, res) {
+    newsapi.getSources(req, res, function(err, data) {
+      if (err) res.send(err);
+      res.json(data);
+    });
+  }
+};
 
 module.exports = controllers;

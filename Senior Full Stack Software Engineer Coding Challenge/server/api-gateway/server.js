@@ -13,11 +13,11 @@ gateway({
         {
             prefix: "/news",
             target: "http://localhost:8001",
-            middlewares: [
-                require("express-jwt")({
-                    secret: config.http.secret
-                })
-            ]
+            // middlewares: [
+            //     require("express-jwt")({
+            //         secret: config.http.secret
+            //     })
+            // ]
         }
     ]
 })
