@@ -11,18 +11,23 @@ the process until a single digit number is calculated.
 
 var logger = [];
 
-function clear() {
+function clearLogger() {
     logger = [];
 }
 
 function calculateValidationNumber(input) {
     let answer = input.toString().split('').map(Number).reduce(function(a, b) {
         logger.push({
-            formula: `${a} + ${b}`,
+            log: `${a} + ${b}`,
             total: a + b
         });
         return a + b
     })
+
+    logger.push({
+        log: "Finished iteration",
+        total: answer
+    });
 
     if (answer.toString().length > 1) {
         answer = calculateValidationNumber(answer);
