@@ -1,4 +1,5 @@
 import { registerApplication, start } from "single-spa";
+import 'antd/dist/antd.css';
 
 registerApplication(
     "home",
