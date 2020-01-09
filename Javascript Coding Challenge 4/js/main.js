@@ -9,14 +9,24 @@ the process until a single digit number is calculated.
 
 **/
 
+var logger = [];
+
+function clear() {
+    logger = [];
+}
+
 function calculateValidationNumber(input) {
     let answer = input.toString().split('').map(Number).reduce(function(a, b) {
-        return a + b;
+        logger.push({
+            formula: `${a} + ${b}`,
+            total: a + b
+        });
+        return a + b
     })
 
     if (answer.toString().length > 1) {
         answer = calculateValidationNumber(answer);
     }
 
-    return answer
+    return logger
 }

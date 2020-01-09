@@ -1,0 +1,12 @@
+h1 {
+    color: blue
+}
+
+table tr th {
+    padding: 15;
+}
+
+table tr td {
+    padding: 15;
+    vertical-align: top
+}

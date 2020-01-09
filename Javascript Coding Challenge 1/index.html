@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Javascript Coding Challenge 1</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="./js/main.js"></script>
+    </head>
+    
+    <script>
+        function init() {
+            document.getElementById("list-by-gender-m").innerHTML = JSON.stringify(listByGender("M"), null, 2)
+            document.getElementById("list-by-gender-f").innerHTML = JSON.stringify(listByGender("F"), null, 2)
+            document.getElementById("list-by-group-department").innerHTML = JSON.stringify(groupByDepartment(), null, 2)
+        }
+    </script>
+    
+    <body onload="init()">
+        <table>
+            <tr>
+                <th><h1>List By Gender = "M"</h1></th>
+                <th><h1>List By Gender = "F"</h1></th>
+                <th><h1>Group By Department</h1></th>
+            </tr>
+            <tr>
+                <td><pre id="list-by-gender-m"></pre></td>
+                <td><pre id="list-by-gender-f"></pre></td>
+                <td><pre id="list-by-group-department"></pre></td>
+            </tr>
+        </table>
+    </body>
+</html>
