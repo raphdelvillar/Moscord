@@ -63,16 +63,20 @@ let people = [
   }
 ];
 
+function getPeople() {
+  return people;
+}
+
 function listByGender(gender) {
-    return people.filter((item) => item.gender === gender);
+  return people.filter((item) => item.gender === gender);
 }
 
 function groupByDepartment() {
-    let groupedData = {};
-    let department = [...new Set(people.map(item => item.department))];
-    department.map((department) => {
-        groupedData[department] = people.filter((item) => item.department === department);
-    })
+  let groupedData = {};
+  let department = [...new Set(people.map(item => item.department))];
+  department.map((department) => {
+    groupedData[department] = people.filter((item) => item.department === department);
+  })
 
-    return groupedData;
+  return groupedData;
 }
