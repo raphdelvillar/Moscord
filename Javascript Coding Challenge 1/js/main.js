@@ -10,72 +10,70 @@ Write your solution without using any libraries and use ES6 or above as much as 
 
 **/
 
-let people = [
-  {
-    name: "Arisa",
-    department: "BP",
-    gender: "F"
-  },
-  {
-    name: "Ham",
-    department: "IT",
-    gender: "F"
-  },
-  {
-    name: "Alice",
-    department: "IT",
-    gender: "F"
-  },
-  {
-    name: "Anna",
-    department: "DA",
-    gender: "F"
-  },
-  {
-    name: "Larry",
-    department: "Sales",
-    gender: "M"
-  },
-  {
-    name: "Ria",
-    department: "Sales",
-    gender: "F"
-  },
-  {
-    name: "JD",
-    department: "Sales",
-    gender: "M"
-  },
-  {
-    name: "Thor",
-    department: "Sales",
-    gender: "M"
-  },
-  {
-    name: "Karl",
-    department: "Sales",
-    gender: "M"
-  },
-  {
-    name: "Rachel",
-    department: "Sales",
-    gender: "F"
-  }
-];
-
 function getPeople() {
-  return people;
+  return [
+    {
+      name: "Arisa",
+      department: "BP",
+      gender: "F"
+    },
+    {
+      name: "Ham",
+      department: "IT",
+      gender: "F"
+    },
+    {
+      name: "Alice",
+      department: "IT",
+      gender: "F"
+    },
+    {
+      name: "Anna",
+      department: "DA",
+      gender: "F"
+    },
+    {
+      name: "Larry",
+      department: "Sales",
+      gender: "M"
+    },
+    {
+      name: "Ria",
+      department: "Sales",
+      gender: "F"
+    },
+    {
+      name: "JD",
+      department: "Sales",
+      gender: "M"
+    },
+    {
+      name: "Thor",
+      department: "Sales",
+      gender: "M"
+    },
+    {
+      name: "Karl",
+      department: "Sales",
+      gender: "M"
+    },
+    {
+      name: "Rachel",
+      department: "Sales",
+      gender: "F"
+    }
+  ];
 }
 
 function listByGender(gender) {
-  return people.filter((item) => item.gender === gender);
+  return getPeople().filter((item) => item.gender === gender);
 }
 
 function groupByDepartment() {
   let groupedData = {};
-  let department = [...new Set(people.map(item => item.department))];
+  let department = [...new Set(getPeople().map(item => item.department))];
   department.map((department) => {
-    groupedData[department] = people.filter((item) => item.department === department);
+    groupedData[department] = getPeople().filter((item) => item.department === department);
   })
 
   return groupedData;
