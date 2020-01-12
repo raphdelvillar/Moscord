@@ -4,6 +4,8 @@
 
 I've used single-spa by Canopy Tax. I've only used reactjs (navbar, news, footer) and vanillajs (for the challenge 1 and challenge 4) and ant-design ui library for most of the design.
 
+# REASON WHY I USED SINGLE-SPA
+
 * This allows the developers to use the framework / ui library that is most familiar to them. This will reduce development time and increase productivity.
 
 * There are cases wherein a language quickly becomes outdated. (ex. AngularJS to Angular) this is to avoid that case by making it easy to update the code by treating components as plugins.
@@ -19,6 +21,8 @@ I've used single-spa by Canopy Tax. I've only used reactjs (navbar, news, footer
 # BACKEND
 
 I've used microservice architecture.
+
+# REASON WHY I USED A MICRO-SERVICE ARCHITECTURE
 
 * This allows the developers to use different backends that is most familiar to them. This will reduce development time and increase productivity.
 
