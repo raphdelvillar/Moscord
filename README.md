@@ -18,6 +18,8 @@ I've used single-spa by Canopy Tax. I've only used reactjs (navbar, news, footer
 
 * Applications that are split into small pieces are easier to containerize.
 
+* Applications are made to be so small as to not incurr a technical debt or atleast minimize it.
+
 # BACKEND
 
 I've used microservice architecture.
@@ -31,6 +33,8 @@ I've used microservice architecture.
 * Implementing microservice architecture makes the application function as more like a plugin. In the case that newsapi.org goes down another service can be readied to prevent downtime. 
 
 * Applications that are split into small pieces are easier to containerize.
+
+* Applications are made to be so small as to not incurr a technical debt or atleast minimize it.
 
 # CORE
 
