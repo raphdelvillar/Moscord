@@ -34,7 +34,7 @@ export default class Article extends React.Component {
 
   render() {
     let { article } = this.props;
-    let articleTitle = this.cleanText(article.title, 28);
+    let articleTitle = this.cleanText(article.title, 40);
     let articleContent = this.cleanText(article.content, 175);
     return (
       <Card

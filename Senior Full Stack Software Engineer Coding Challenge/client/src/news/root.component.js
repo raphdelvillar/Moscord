@@ -1,13 +1,17 @@
 import React from "react";
 
+import "antd/dist/antd.css";
+import "./assets/css/style.css";
+
 import Source from "./components/source.js";
 import NewsContent from "./components/news-content.js";
+import NewsContentPagination from "./components/news-content-pagination.js";
 
 import { Layout, notification } from "antd";
 
 import api from "../data/index.js";
 
-export default class MoscordNews extends React.Component {
+export default class News extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,16 +81,20 @@ export default class MoscordNews extends React.Component {
     let { sources, articles, loading } = this.state;
     return (
       <div>
-        <Layout style={{ height: "100%" }}>
+        <Layout id="main-layout">
           <Source
             sources={sources}
             getArticlesBySource={this.getArticlesBySource}
             isLoading={loading.source}
           />
-          <Layout style={{ padding: "0 24px 24px" }}>
+          <Layout id="content-layout">
             <NewsContent articles={articles} isLoading={loading.article} />
           </Layout>
         </Layout>
+        <NewsContentPagination
+          articles={articles}
+          isLoading={loading.article}
+        />
       </div>
     );
   }

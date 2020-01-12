@@ -4,6 +4,33 @@ import { Layout, Menu, Spin, Input } from "antd";
 const { Sider } = Layout;
 const { Search } = Input;
 
+const SourceSearch = props => (
+  <Search
+    placeholder="Search"
+    onSearch={props.searchSource}
+    className="search"
+  ></Search>
+);
+
+const SourceList = props => (
+  <div className="source-list">
+    <Menu
+      mode="inline"
+      defaultSelectedKeys={["1"]}
+      defaultOpenKeys={["sub1"]}
+      className="menu"
+    >
+      {props.sources.map(source => {
+        return (
+          <Menu.Item onClick={props.onSourceSelect} key={source.id}>
+            {source.name}
+          </Menu.Item>
+        );
+      })}
+    </Menu>
+  </div>
+);
+
 export default class Source extends React.Component {
   constructor(props) {
     super(props);
@@ -29,45 +56,20 @@ export default class Source extends React.Component {
     let { sources, isLoading } = this.props;
     let { filteredSources } = this.state;
     return (
-      <Sider
-        width={300}
-        style={{
-          height: "100%",
-          overflowY: "auto",
-          overflowX: "hidden",
-          background: "#fff"
-        }}
-      >
-        {isLoading ? (
-          <center>
-            <Spin style={{ padding: 25 }} tip="Loading..."></Spin>
-          </center>
-        ) : (
-          <React.Fragment>
-            <Search
-              placeholder="Search"
-              onSearch={this.searchSource}
-              style={{ padding: 5, height: 50 }}
-            ></Search>
-            <Menu
-              mode="inline"
-              defaultSelectedKeys={["1"]}
-              defaultOpenKeys={["sub1"]}
-              style={{
-                height: "100%",
-                borderRight: 0
-              }}
-            >
-              {sources.map(source => {
-                return (
-                  <Menu.Item onClick={this.onSourceSelect} key={source.id}>
-                    {source.name}
-                  </Menu.Item>
-                );
-              })}
-            </Menu>
-          </React.Fragment>
-        )}
+      <Sider width={300} id="sider">
+        <React.Fragment>
+          <SourceSearch searchSource={this.searchSource} />
+          {isLoading ? (
+            <center>
+              <Spin className="loader" tip="Loading..." />
+            </center>
+          ) : (
+            <SourceList
+              sources={sources}
+              onSourceSelect={this.onSourceSelect}
+            />
+          )}
+        </React.Fragment>
       </Sider>
     );
   }

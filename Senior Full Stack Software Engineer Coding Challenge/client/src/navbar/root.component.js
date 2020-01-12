@@ -1,6 +1,8 @@
 import React from "react";
 import { navigateToUrl } from "single-spa";
 
+import "antd/dist/antd.css";
+
 import { Layout, Menu } from "antd";
 
 const { Header } = Layout;

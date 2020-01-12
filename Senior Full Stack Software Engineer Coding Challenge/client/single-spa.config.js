@@ -1,6 +1,5 @@
 import { registerApplication, start } from "single-spa";
 import "babel-polyfill";
-import "antd/dist/antd.css";
 import "./style.css";
 
 function onCurrentRoute(path) {
