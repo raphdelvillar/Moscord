@@ -34,4 +34,4 @@ This is just a package to install concurrently that will allow both server and c
 
 # HOW TO RUN
 
-Execute in terminal the command "make run"
+Execute in terminal the command "make run". Only runs in Mac and Ubuntu for now.
