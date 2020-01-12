@@ -34,4 +34,5 @@ This is just a package to install concurrently that will allow both server and c
 
 # HOW TO RUN
 
-Execute in terminal the command "make run". Only runs in Mac and Ubuntu for now.
+* Clone repository into an empty directory
+* Inside the Moscord folder execute in the terminal the command "make run". Only runs in Mac and Ubuntu for now.
