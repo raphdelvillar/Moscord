@@ -8,6 +8,10 @@ export default class NewsContentPagination extends React.Component {
     return 0;
   };
 
+  onPaginationChange = (page, pageSize) => {
+    this.props.onPaginationUpdate(page, pageSize);
+  };
+
   render() {
     let { articles, isLoading } = this.props;
     return (
@@ -23,6 +27,7 @@ export default class NewsContentPagination extends React.Component {
             }
             pageSize={10}
             defaultCurrent={1}
+            onChange={this.onPaginationChange}
           />
         )}
       </React.Fragment>

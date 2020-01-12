@@ -8,7 +8,7 @@ const { Meta } = Card;
 
 const ArticleTitle = props => (
   <p>
-    {props.title}
+    <b>{props.title}</b>
     <br />
     <small>{props.publishedAt}</small>
   </p>

@@ -1,16 +1,7 @@
 import React from "react";
 
-import { Layout, Menu, Spin, Input, Divider } from "antd";
+import { Layout, Menu, Spin } from "antd";
 const { Sider } = Layout;
-const { Search } = Input;
-
-const SourceSearch = props => (
-  <Search
-    placeholder="Search"
-    onSearch={props.searchSource}
-    className="search"
-  ></Search>
-);
 
 const SourceList = props => (
   <div className="source-list">
@@ -32,33 +23,16 @@ const SourceList = props => (
 );
 
 export default class Source extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filteredSources: this.props.sources
-    };
-  }
-
   onSourceSelect = source => {
     let sourceId = source.key;
     this.props.getArticlesBySource(sourceId);
   };
 
-  searchSource = searchText => {
-    let { sources } = this.props;
-    let filteredSources = sources.filter(item => {
-      item.name === searchText;
-    });
-    this.setState({ filteredSources });
-  };
-
   render() {
     let { sources, isLoading } = this.props;
-    let { filteredSources } = this.state;
     return (
-      <Sider width={300} id="sider">
+      <Sider id="sider">
         <React.Fragment>
-          <SourceSearch searchSource={this.searchSource} />
           {isLoading ? (
             <center>
               <Spin className="loader" tip="Loading..." />

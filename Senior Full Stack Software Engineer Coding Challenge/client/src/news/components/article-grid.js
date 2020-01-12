@@ -8,10 +8,10 @@ export default class ArticleGrid extends React.Component {
     let { articles } = this.props;
     return (
       <Row gutter={25}>
-        {articles.map(article => {
+        {articles.map((article, index) => {
           return (
-            <Col className="article-grid-col" xs={24} sm={12} md={8}>
-              <Article article={article} />
+            <Col key={`col-${index}`} className="article-grid-col" xs={24} sm={24} md={24} lg={8}>
+              <Article key={`article-${index}`} article={article} />
             </Col>
           );
         })}

@@ -13,6 +13,10 @@ export default class MoscordFooter extends React.Component {
     };
   }
 
+  componentDidCatch = (error, info) => {
+    console.log(`${error} => ${info}`);
+  };
+
   render() {
     return (
       <Footer id="footer">

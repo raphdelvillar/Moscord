@@ -6,14 +6,14 @@ let apiKey = config.newsapi.key;
 let newsapi = {
   getArticlesFromSource: function(req, res, _) {
     request(
-      `${url}/top-headlines?sources=${req.params.source}&apiKey=${apiKey}`,
+      `${url}/everything?sources=${req.params.source}&apiKey=${apiKey}`,
       function(error, response, body) {
         if (!error && response.statusCode == 200) {
           response = JSON.parse(body);
           res.send({
             Data: {
               articles: response.articles,
-              totalResults: response.totalResults
+              totalResults: response.articles.length
             },
             Error: null
           });

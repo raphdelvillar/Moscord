@@ -41,6 +41,10 @@ body {
 }
 
 #footer {
+    clear: both;
+    position: relative;
+    height: 70;
+    margin-top: 50;
     background-color: #001529;
     color: white
 }

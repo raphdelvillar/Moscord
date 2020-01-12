@@ -1,5 +1,5 @@
 #main-layout {
-    height: 90%
+    height: 100%
 }
 
 #content-layout {
@@ -16,14 +16,8 @@
     background-color: #ffffff;
 }
 
-#sider .search {
-    margin-top: 10;
-    padding: 5;
-    height: 50;
-}
-
 #sider .source-list {
-    height: 90.5%;
+    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -36,7 +30,7 @@
 #news-content {
     padding: 24;
     margin: 0;
-    min-height: 812;
+    min-height: 100%;
 }
 
 #news-content .result {
