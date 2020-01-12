@@ -28,7 +28,7 @@ I've used microservice architecture.
 
 * Applications that are split into small pieces are easier to containerize.
 
-# RUNNER
+# CORE
 
 This is just a package to install concurrently that will allow both server and client to run on one terminal
 
