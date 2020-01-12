@@ -1,2 +1,2 @@
 run:
-	./Runner/run.sh
+	./Core/run.sh

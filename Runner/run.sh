@@ -1,1 +1,0 @@
-eval "cd ./Runner && npm run dev"

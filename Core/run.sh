@@ -1,0 +1,1 @@
+eval "cd ./Core && npm run dev"

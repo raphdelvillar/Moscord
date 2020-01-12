@@ -10,14 +10,9 @@ import NewsContentPagination from "./components/news-content-pagination.js";
 import { Layout, notification } from "antd";
 
 import { connect } from "react-redux";
-import {
-  setSources,
-  fetchSources,
-  setArticles,
-  fetchArticles
-} from "./store/actions";
 
 import api from "../data/index.js";
+import { setSources, setArticles } from "./store/actions";
 
 class News extends React.Component {
   constructor(props) {
@@ -41,7 +36,6 @@ class News extends React.Component {
   }
 
   componentDidMount = () => {
-    console.log(this.props);
     this.getSource();
   };
 
@@ -54,8 +48,10 @@ class News extends React.Component {
     api.Source("news/sources").GetAll(response => {
       if (!response.Error) {
         this.setState({ sources: response.Data });
+        this.props.setSources(response.Data);
         this.setLoading("source", false);
       } else {
+        this.setState({ sources: this.props.sources });
         this.setLoading("source", false);
         this.openNotification("error", "Error", "Internal Server Error");
       }
@@ -83,8 +79,10 @@ class News extends React.Component {
     api.Article(`news/articles`).FindBySource(source, response => {
       if (!response.Error) {
         this.setState({ articles: response.Data });
+        this.props.setArticles(response.Data);
         this.onPaginationUpdate(1, 10);
       } else {
+        this.setState({ articles: this.props.articles });
         this.setLoading("article", false);
         this.openNotification("error", "Error", "Internal Server Error");
       }
@@ -92,11 +90,11 @@ class News extends React.Component {
   };
 
   onPaginationUpdate = (page, pageSize) => {
-    let { articles, filteredArticles } = this.state;
+    let { filteredArticles } = this.state;
     this.setLoading("article", true);
     let pageSlice = (page - 1) * pageSize;
-    filteredArticles.articles = articles.articles;
-    filteredArticles.totalResults = articles.totalResults;
+    filteredArticles.articles = this.props.articles.articles;
+    filteredArticles.totalResults = this.props.articles.totalResults;
     filteredArticles.articles = filteredArticles.articles.slice(
       pageSlice,
       pageSlice + 10
@@ -132,8 +130,18 @@ class News extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => {
+  return {
+    sources: state.sources,
+    articles: state.articles
+  };
+};
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => {
+  return {
+    setSources: sources => dispatch(setSources(sources)),
+    setArticles: articles => dispatch(setArticles(articles))
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(News);
