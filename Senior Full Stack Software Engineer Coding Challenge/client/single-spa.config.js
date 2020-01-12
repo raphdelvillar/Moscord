@@ -3,7 +3,7 @@ import "babel-polyfill";
 import "./style.css";
 
 function onCurrentRoute(path) {
-  if (location.pathname.startsWith(path)) return true;
+  if (location.pathname == path) return true;
   return false;
 }
 
@@ -12,6 +12,12 @@ registerApplication(
   "navbar",
   () => import("./src/navbar/navbar.app.js"),
   () => true
+);
+
+registerApplication(
+  "home",
+  () => import("./src/home/home.app.js"),
+  () => onCurrentRoute("/")
 );
 
 registerApplication(
