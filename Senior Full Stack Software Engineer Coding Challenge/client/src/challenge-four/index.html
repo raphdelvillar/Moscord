@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-framework="javascript">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Javascript Coding Challenge 4</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body onload="init()">
+    <center>
+      <h1>Calculate Validation Number</h1>
+      <table class="container">
+        <thead>
+          <tr>
+            <th><h1>Input "444444"</h1></th>
+            <th><h1>Input "1234"</h1></th>
+            <th><h1>Input "23478998"</h1></th>
+            <th>
+              <h1>
+                Input
+                <input type="number" id="manual-input-box" oninput="manual()" />
+              </h1>
+            </th>
+          </tr>
+        </thead>
+        <tr>
+          <tbody>
+            <td><pre id="calculate-validation-number-444444"></pre></td>
+            <td><pre id="calculate-validation-number-1234"></pre></td>
+            <td><pre id="calculate-validation-number-23478998"></pre></td>
+            <td><pre id="manual-input"></pre></td>
+          </tbody>
+        </tr>
+      </table>
+    </center>
+    <script src="js/main.js"></script>
+    <script src="js/init.js"></script>
+  </body>
+</html>

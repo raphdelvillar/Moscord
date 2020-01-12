@@ -1,12 +1,42 @@
 import { registerApplication, start } from "single-spa";
-import 'antd/dist/antd.css';
+import "babel-polyfill";
+import "antd/dist/antd.css";
+import "./style.css";
+
+function onCurrentRoute(path) {
+  if (location.pathname.startsWith(path)) return true;
+  return false;
+}
+
+// Registers SPA Applications --
+registerApplication(
+  "navbar",
+  () => import("./src/navbar/navbar.app.js"),
+  () => true
+);
 
 registerApplication(
-    "home",
-    () => import("./src/home/home.app.js"),
-    (location) => location.pathname === "" ||
-      location.pathname === "/" ||
-      location.pathname.startsWith("/home")
+  "iframe-challenge-one",
+  () => import("./src/challenge-one/challenge-one.app.js"),
+  () => onCurrentRoute("/javascript-challenge-one")
+);
+
+registerApplication(
+  "iframe-challenge-four",
+  () => import("./src/challenge-four/challenge-four.app.js"),
+  () => onCurrentRoute("/javascript-challenge-four")
+);
+
+registerApplication(
+  "news",
+  () => import("./src/news/news.app.js"),
+  () => onCurrentRoute("/senior-full-stack-software-engineer-coding-challenge")
+);
+
+registerApplication(
+  "footer",
+  () => import("./src/footer/footer.app.js"),
+  () => true
 );
 
 start();

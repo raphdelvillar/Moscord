@@ -1,48 +1,108 @@
-const path = require('path');
-const webpack = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require("webpack");
+const path = require("path");
+const lodash = require("lodash");
+
+const infernoBabelConfig = getBabelConfig();
+infernoBabelConfig.plugins.push("inferno");
+
+const preactBabelConfig = getBabelConfig();
+preactBabelConfig.presets.splice(0, 1);
+preactBabelConfig.plugins.push(["transform-react-jsx", { pragma: "h" }]);
+
 module.exports = {
-  mode: 'development',
-  entry: {
-    // Set the single-spa config as the project entry point
-    'single-spa.config': './single-spa.config.js',
-  },
+  entry: __dirname + "/single-spa.config.js",
   output: {
-    publicPath: '/dist/',
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: process.cwd() + "/build",
+    filename: "[name].js",
+    publicPath: "/build/"
+  },
+  devtool: "inline-source-map",
+  devServer: {
+    port: 8080,
+    publicPath: "/build/",
+    contentBase: "./",
+    historyApiFallback: {
+      index: "index.html"
+    }
+  },
+  resolve: {
+    modules: ["node_modules", path.resolve(__dirname, "./")],
+    alias: {
+      "single-spa": path.resolve(
+        __dirname,
+        "node_modules/single-spa/lib/single-spa.js"
+      )
+    }
   },
   module: {
     rules: [
       {
-        // Webpack style loader added so we can use materialize
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }, {
-        test: /\.js$/,
-        exclude: [path.resolve(__dirname, 'node_modules')],
-        loader: 'babel-loader',
-      }, {
-        // This plugin will allow us to use AngularJS HTML templates
-        test: /\.html$/,
-        exclude: /node_modules/,
-        loader: 'html-loader',
+        use: ["style-loader", "css-loader"]
       },
-    ],
-  },
-  node: {
-    fs: 'empty'
-  },
-  resolve: {
-    modules: [path.resolve(__dirname, 'node_modules')],
+      {
+        test: /inferno.+\.js$/,
+        loader: "babel-loader",
+        query: infernoBabelConfig
+      },
+      {
+        test: /preact.+\.js$/,
+        loader: "babel-loader",
+        query: preactBabelConfig
+      },
+      {
+        test: /\.html$/,
+        exclude: /node_modules|svelte/,
+        loader: "html-loader"
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules|inferno|preact/,
+        loader: "babel-loader",
+        query: getBabelConfig()
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        loader: "ts-loader"
+      },
+      {
+        test: /svelte.+\.html$/,
+        loader: "svelte-loader"
+      }
+    ]
   },
   plugins: [
-    // A webpack plugin to remove/clean the output folder before building
-    new CleanWebpackPlugin(),
-  ],
-  devtool: 'source-map',
-  externals: [],
-  devServer: {
-    historyApiFallback: true
-  }
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "common",
+      minChunks: module =>
+        module.context && module.context.indexOf("node_modules") !== -1
+    }),
+    new webpack.ContextReplacementPlugin(
+      /\@angular(\\|\/)core(\\|\/)esm5/,
+      path.join(__dirname, "./src")
+    )
+  ]
 };
+
+function getBabelConfig() {
+  return {
+    presets: [
+      "react",
+      [
+        "babel-preset-env",
+        {
+          targets: {
+            browsers: ["last 2 versions"]
+          }
+        }
+      ]
+    ],
+    plugins: [
+      "transform-object-rest-spread",
+      "transform-class-properties",
+      "syntax-dynamic-import",
+      "transform-function-bind"
+    ]
+  };
+}
