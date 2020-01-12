@@ -1,0 +1,18 @@
+{
+  "name": "runner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd '../Senior Full Stack Software Engineer Coding Challenge/client' && npm start",
+    "gateway": "cd '../Senior Full Stack Software Engineer Coding Challenge/server/api-gateway' && node index.js",
+    "news": "cd '../Senior Full Stack Software Engineer Coding Challenge/server/news' && node index.js",
+    "dev": "concurrently \"npm run client\" \"npm run gateway\" \"npm run news\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.0.2"
+  }
+}

@@ -12,26 +12,30 @@ the process until a single digit number is calculated.
 var logger = [];
 
 function clearLogger() {
-    logger = [];
+  logger = [];
 }
 
 function calculateValidationNumber(input) {
-    let answer = input.toString().split('').map(Number).reduce(function(a, b) {
-        logger.push({
-            log: `${a} + ${b}`,
-            total: a + b
-        });
-        return a + b
-    })
-
-    logger.push({
-        log: "Finished iteration",
-        total: answer
+  let answer = input
+    .toString()
+    .split("")
+    .map(Number)
+    .reduce(function(a, b) {
+      logger.push({
+        log: `${a} + ${b}`,
+        total: a + b
+      });
+      return a + b;
     });
 
-    if (answer.toString().length > 1) {
-        answer = calculateValidationNumber(answer);
-    }
+  logger.push({
+    log: "Finished iteration",
+    total: answer
+  });
 
-    return logger
+  if (answer.toString().length > 1) {
+    answer = calculateValidationNumber(answer);
+  }
+
+  return logger;
 }
