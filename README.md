@@ -8,7 +8,7 @@ I've used single-spa by Canopy Tax. I've only used reactjs (navbar, news, footer
 
 * This allows the developers to use the framework / ui library that is most familiar to them. This will reduce development time and increase productivity.
 
-* There are cases wherein a language quickly becomes outdated or drastically changed. (ex. AngularJS to Angular) this is to avoid that case by making it easy to update the code by treating every code component as plugins.
+* There are cases wherein a framework / ui library quickly becomes outdated or drastically changed. (ex. AngularJS to Angular) this is to avoid that case by making it easy to update the code by treating every code component as plugins.
 
 * This will challenge the developers willing to study more than one language which in some cases makes the work more exciting and engaging.
 
