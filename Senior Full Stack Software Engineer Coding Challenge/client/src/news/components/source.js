@@ -26,7 +26,7 @@ export default class Source extends React.Component {
   };
 
   render() {
-    let { isLoading } = this.props;
+    let { sources, isLoading } = this.props;
     let { filteredSources } = this.state;
     return (
       <Sider
@@ -58,7 +58,7 @@ export default class Source extends React.Component {
                 borderRight: 0
               }}
             >
-              {filteredSources.map(source => {
+              {sources.map(source => {
                 return (
                   <Menu.Item onClick={this.onSourceSelect} key={source.id}>
                     {source.name}
