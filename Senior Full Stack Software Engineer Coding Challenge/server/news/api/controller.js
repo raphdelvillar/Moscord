@@ -7,7 +7,7 @@ let controllers = {
     newsapi.getArticlesFromSource(req, res, function(err, data) {
       if (err) res.send(err);
       res.json(data);
-    })
+    });
   },
   getSources: function(req, res) {
     newsapi.getSources(req, res, function(err, data) {

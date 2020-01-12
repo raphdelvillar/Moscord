@@ -8,13 +8,12 @@ let newsapi = {
     request(
       `${url}/top-headlines?sources=${req.params.source}&apiKey=${apiKey}`,
       function(error, response, body) {
-        console.log(response);
         if (!error && response.statusCode == 200) {
           response = JSON.parse(body);
           res.send({
             Data: {
               articles: response.articles,
-              totalResults: response.totalResults,
+              totalResults: response.totalResults
             },
             Error: null
           });
