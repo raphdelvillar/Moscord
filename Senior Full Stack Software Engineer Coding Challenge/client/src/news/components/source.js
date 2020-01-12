@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Layout, Menu, Spin, Input } from "antd";
+import { Layout, Menu, Spin, Input, Divider } from "antd";
 const { Sider } = Layout;
 const { Search } = Input;
 

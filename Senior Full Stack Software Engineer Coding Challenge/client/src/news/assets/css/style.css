@@ -17,12 +17,13 @@
 }
 
 #sider .search {
+    margin-top: 10;
     padding: 5;
     height: 50;
 }
 
 #sider .source-list {
-    height: 92%;
+    height: 90.5%;
     overflow-y: auto;
     overflow-x: hidden;
 }

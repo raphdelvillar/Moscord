@@ -41,6 +41,12 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
+        test: /\.(jpg|png)$/,
+        use: {
+          loader: 'url-loader',
+        },
+      },
+      {
         test: /inferno.+\.js$/,
         loader: "babel-loader",
         query: infernoBabelConfig
